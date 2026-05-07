@@ -17,13 +17,19 @@
 
     <!-- HERO FULL SCREEN -->
     <section class="hero" aria-labelledby="project-title">
-      <a class="hero-link" href="#project-video" aria-label="Go to Magdeburg Weichnasmarkt video">
+      <button
+        class="hero-link hero-video-trigger"
+        type="button"
+        data-youtube-id="REPLACE_WITH_MAGDEBURG_WEICHNASMARKT_VIDEO_ID"
+        data-youtube-title="Magdeburg Weichnasmarkt project video"
+        aria-label="Open Magdeburg Weichnasmarkt video"
+      >
         <img
           class="hero-image"
           src="../../img/audiovisual/magdeburg_weichnasmarkt/principale.png"
           alt="Blurred carousel lights at the Magdeburg Christmas market."
         >
-      </a>
+      </button>
 
       <!-- HEADER SOVRAPPOSTO ALLA HERO -->
       <header class="header">
@@ -88,19 +94,6 @@
       </blockquote>
     </section>
 
-    <section class="project-video" id="project-video" aria-label="Project video">
-      <div class="video-embed">
-        <iframe
-          src="https://www.youtube.com/embed/REPLACE_WITH_MAGDEBURG_WEICHNASMARKT_VIDEO_ID"
-          title="Magdeburg Weichnasmarkt project video"
-          frameborder="0"
-          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-          referrerpolicy="strict-origin-when-cross-origin"
-          allowfullscreen
-        ></iframe>
-      </div>
-    </section>
-
     <!-- STILLS / GRIGLIA IMMAGINI -->
     <section class="stills-board" aria-label="Project stills">
       <div class="stack-column">
@@ -159,6 +152,7 @@
 
   <script src="../../js/components/navbar.js"></script>
   <script src="../../js/audiovisuals/magdeburg_weichnasmarkt.js"></script>
+  <script src="../../js/audiovisuals/youtube_modal.js"></script>
 </body>
 
 </html>

@@ -25,13 +25,19 @@
   <main class="project-page">
 
     <section class="hero">
-      <a class="hero-link" href="#project-video" aria-label="Go to Intercept (Perception) video">
+      <button
+        class="hero-link hero-video-trigger"
+        type="button"
+        data-youtube-id="REPLACE_WITH_INTERCEPT_VIDEO_ID"
+        data-youtube-title="Intercept (Perception) project video"
+        aria-label="Open Intercept (Perception) video"
+      >
         <img
           class="hero-image"
           src="../../img/audiovisual/intercept/intercept.png"
           alt="Still from Intercept (Perception)."
         >
-      </a>
+      </button>
 
       <header class="header">
         <a class="logo" href="../../index.html">CARLOTTA TONINI</a>
@@ -81,19 +87,6 @@
       </blockquote>
     </section>
 
-    <section class="project-video" id="project-video" aria-label="Project video">
-      <div class="video-embed">
-        <iframe
-          src="https://www.youtube.com/embed/REPLACE_WITH_INTERCEPT_VIDEO_ID"
-          title="Intercept (Perception) project video"
-          frameborder="0"
-          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-          referrerpolicy="strict-origin-when-cross-origin"
-          allowfullscreen
-        ></iframe>
-      </div>
-    </section>
-
     <section class="collage" aria-label="Project stills">
 
       <figure class="frame frame-a">
@@ -130,6 +123,7 @@
 
   <script src="../../js/components/navbar.js"></script>
   <script src="../../js/audiovisuals/intercept.js"></script>
+  <script src="../../js/audiovisuals/youtube_modal.js"></script>
 </body>
 
 </html>

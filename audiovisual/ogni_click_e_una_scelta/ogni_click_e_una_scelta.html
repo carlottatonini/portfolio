@@ -18,17 +18,19 @@
 
     <!-- HERO FULL SCREEN -->
     <section class="hero" id="top" aria-labelledby="project-title">
-      <a
-        class="hero-link"
-        href="#project-video"
-        aria-label="Go to Ogni click e una scelta video"
+      <button
+        class="hero-link hero-video-trigger"
+        type="button"
+        data-youtube-id="iOkFuRHlJJI"
+        data-youtube-title="Ogni click e una scelta project video"
+        aria-label="Open Ogni click e una scelta video"
       >
         <img
           class="hero-image"
           src="../../img/audiovisual/ogni_click_e_una_scelta/wide_sfondo.png"
         alt="Still in black and white from Ogni click è una scelta."
         >
-      </a>
+      </button>
 
       <!-- HEADER SOVRAPPOSTO ALLA HERO -->
       <header class="header">
@@ -102,19 +104,6 @@
       </blockquote>
     </section>
 
-    <section class="project-video" id="project-video" aria-label="Project video">
-      <div class="video-embed">
-        <iframe
-          src="https://www.youtube.com/embed/iOkFuRHlJJI"
-          title="Ogni click e una scelta project video"
-          frameborder="0"
-          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-          referrerpolicy="strict-origin-when-cross-origin"
-          allowfullscreen
-        ></iframe>
-      </div>
-    </section>
-
     <!-- COLLAGE / GRIGLIA IMMAGINI - NON MODIFICATO -->
     <section class="collage" aria-label="Project stills">
       <div class="collage-row collage-row-top">
@@ -168,6 +157,7 @@
   </main>
 
   <script src="../../js/components/navbar.js"></script>
+  <script src="../../js/audiovisuals/youtube_modal.js"></script>
 </body>
 
 </html>

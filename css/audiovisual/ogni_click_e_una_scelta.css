@@ -121,10 +121,6 @@ img {
   width: 100%;
 }
 
-body.video-open {
-  overflow: hidden;
-}
-
 a {
   color: inherit;
 }
@@ -180,96 +176,6 @@ a {
   min-height: var(--hero-height);
   object-fit: cover;
   object-position: var(--hero-object-position-x) var(--hero-object-position-y);
-}
-
-/* ==========================================================================
-   VIDEO MODAL
-   ========================================================================== */
-
-.video-modal {
-  position: fixed;
-  inset: 0;
-  z-index: 2400;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  padding: clamp(18px, 4vw, 54px);
-  visibility: hidden;
-  opacity: 0;
-  pointer-events: none;
-  transition:
-    opacity 0.25s ease,
-    visibility 0.25s ease;
-}
-
-.video-modal.open {
-  visibility: visible;
-  opacity: 1;
-  pointer-events: auto;
-}
-
-.video-modal__backdrop {
-  position: absolute;
-  inset: 0;
-  background: rgba(0, 0, 0, 0.68);
-}
-
-.video-modal__dialog {
-  position: relative;
-  z-index: 1;
-  width: min(860px, calc(100vw - (2 * var(--page-margin-x))));
-  color: var(--white);
-}
-
-.video-modal__title {
-  margin: 0 0 clamp(10px, 1.2vw, 16px);
-  padding-right: clamp(42px, 5vw, 64px);
-  color: var(--white);
-  font-family: var(--font-serif);
-  font-weight: 400;
-  font-size: clamp(26px, 2.4vw, 42px);
-  line-height: 0.98;
-}
-
-.video-modal__frame {
-  position: relative;
-  width: 100%;
-  aspect-ratio: 16 / 9;
-  background: #000000;
-  box-shadow: 0 22px 58px rgba(0, 0, 0, 0.34);
-}
-
-.video-modal__frame iframe,
-.video-modal__video {
-  position: absolute;
-  inset: 0;
-  width: 100%;
-  height: 100%;
-  border: 0;
-  object-fit: contain;
-}
-
-.video-modal__close {
-  position: absolute;
-  top: 0;
-  right: 0;
-  z-index: 2;
-  width: clamp(34px, 3.4vw, 46px);
-  height: clamp(34px, 3.4vw, 46px);
-  padding: 0;
-  border: 0;
-  background: transparent;
-  color: var(--white);
-  font-family: var(--font-sans);
-  font-size: clamp(34px, 3.2vw, 46px);
-  font-weight: 300;
-  line-height: 1;
-  cursor: pointer;
-}
-
-.video-modal__close:focus-visible {
-  outline: 2px solid var(--white);
-  outline-offset: 4px;
 }
 
 /* ==========================================================================

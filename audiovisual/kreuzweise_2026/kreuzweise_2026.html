@@ -25,13 +25,19 @@
   <main class="project-page">
 
     <section class="hero">
-      <a class="hero-link" href="#project-video" aria-label="Go to Kreuzweise 2026 video">
+      <button
+        class="hero-link hero-video-trigger"
+        type="button"
+        data-youtube-id="REPLACE_WITH_KREUZWEISE_2026_VIDEO_ID"
+        data-youtube-title="Kreuzweise 2026 project video"
+        aria-label="Open Kreuzweise 2026 video"
+      >
         <img
           class="hero-image"
           src="../../img/audiovisual/kreuzweise_2026/kreuzweise_2026.png"
           alt="Still from Kreuzweise 2026."
         >
-      </a>
+      </button>
 
       <header class="header">
         <a class="logo" href="../../index.html">CARLOTTA TONINI</a>
@@ -77,19 +83,6 @@
         “What would it take to convince
         you to stand up and speak?”
       </blockquote>
-    </section>
-
-    <section class="project-video" id="project-video" aria-label="Project video">
-      <div class="video-embed">
-        <iframe
-          src="https://www.youtube.com/embed/REPLACE_WITH_KREUZWEISE_2026_VIDEO_ID"
-          title="Kreuzweise 2026 project video"
-          frameborder="0"
-          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-          referrerpolicy="strict-origin-when-cross-origin"
-          allowfullscreen
-        ></iframe>
-      </div>
     </section>
 
     <section class="collage" aria-label="Project stills">
@@ -144,6 +137,7 @@
 
   <script src="../../js/components/navbar.js"></script>
   <script src="../../js/audiovisuals/kreuzweise_2026.js"></script>
+  <script src="../../js/audiovisuals/youtube_modal.js"></script>
 </body>
 
 </html>
