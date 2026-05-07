@@ -1,0 +1,315 @@
+/* ==========================================================================
+   NAVBAR STANDARD
+   ========================================================================== */
+
+@font-face {
+  font-family: "Proxima Nova";
+  src: url("../../fonts/Proxima Nova Regular.ttf") format("truetype");
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Proxima Nova";
+  src: url("../../fonts/Proxima Nova Light.ttf") format("truetype");
+  font-weight: 300;
+  font-style: normal;
+  font-display: swap;
+}
+
+:root {
+  --page-margin-x: clamp(24px, 5.73vw, 110px);
+  --nav-top: clamp(48px, 10.185svh, 110px);
+
+  --logo-x: var(--page-margin-x);
+  --navigate-x: 50vw;
+  --navigate-label-half-width: 109px;
+
+  --hamburger-right: var(--page-margin-x);
+  --hamburger-top: clamp(26px, 4.54svh, 49px);
+
+  --nav-font-size: clamp(15px, 1.15vw, 22px);
+  --logo-font-size: clamp(22px, 1.9vw, 36px);
+
+  --hamburger-width: clamp(42px, 4.17vw, 80px);
+  --hamburger-line-height: clamp(2px, 0.18svh, 3px);
+  --hamburger-gap: clamp(12px, 2.6svh, 28px);
+  --hamburger-hit-area: 44px;
+
+  --navbar-font: "Proxima Nova", Arial, sans-serif;
+  --navbar-color: var(--hero-text-color, #ffffff);
+  --navbar-background-height: max(
+    calc(var(--nav-top) + clamp(18px, 2.4svh, 34px)),
+    calc(
+      var(--hamburger-top) +
+      (var(--hamburger-line-height) * 3) +
+      (var(--hamburger-gap) * 2) +
+      clamp(16px, 2svh, 30px)
+    )
+  );
+  --navbar-scroll-bg: rgba(255, 255, 255, 0.92);
+  --navbar-scroll-border: rgba(17, 17, 17, 0.08);
+  --navbar-menu-bg: #ffffff;
+  --navbar-menu-text: #9a9a9a;
+  --navbar-open-color: #111111;
+}
+
+body.menu-open {
+  overflow: hidden;
+}
+
+html,
+body {
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+}
+
+html::-webkit-scrollbar,
+body::-webkit-scrollbar {
+  width: 0;
+  height: 0;
+}
+
+.header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 9500;
+  height: var(--nav-top);
+  padding: 0;
+  margin: 0;
+  pointer-events: none;
+}
+
+.header::before {
+  content: "";
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: calc((100vw - 100%) * -1);
+  z-index: 0;
+  height: var(--navbar-background-height);
+  background: var(--navbar-scroll-bg);
+  border-bottom: 1px solid var(--navbar-scroll-border);
+  box-shadow: 0 10px 30px rgba(17, 17, 17, 0.04);
+  opacity: 0;
+  pointer-events: none;
+  transform: translateY(-10px);
+  transition:
+    opacity 0.28s ease,
+    transform 0.28s ease;
+}
+
+@supports ((-webkit-backdrop-filter: blur(12px)) or (backdrop-filter: blur(12px))) {
+  .header::before {
+    background: rgba(255, 255, 255, 0.84);
+    -webkit-backdrop-filter: blur(12px);
+    backdrop-filter: blur(12px);
+  }
+}
+
+body.project-subpage.navbar-on-light .header::before {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.logo,
+.menu,
+.hamburger {
+  pointer-events: auto;
+}
+
+.logo,
+.menu {
+  position: absolute;
+  z-index: 1;
+  bottom: 0;
+  display: block;
+  color: var(--navbar-color);
+  font-family: var(--navbar-font);
+  font-weight: 300;
+  font-size: var(--nav-font-size);
+  line-height: 0.95;
+  letter-spacing: 0.5px;
+  text-decoration: none;
+  text-transform: uppercase;
+  white-space: nowrap;
+  text-shadow: 0 1px 16px rgba(0, 0, 0, 0.36);
+  transition:
+    color 0.2s ease,
+    text-shadow 0.2s ease;
+}
+
+.logo {
+  left: var(--logo-x);
+  max-width: min(56vw, 420px);
+  font-size: var(--logo-font-size);
+  line-height: 0.9;
+  letter-spacing: 1px;
+}
+
+.menu {
+  left: var(--navigate-x);
+  max-width: 36vw;
+  overflow: hidden;
+  text-align: center;
+  text-overflow: ellipsis;
+  transform: translateX(-50%);
+}
+
+.navigate-through {
+  cursor: pointer;
+}
+
+.hamburger {
+  position: fixed;
+  top: var(--hamburger-top);
+  right: calc(var(--hamburger-right) - (100vw - 100%));
+  z-index: 10000;
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+  justify-content: center;
+  gap: var(--hamburger-gap);
+  width: var(--hamburger-width);
+  min-height: var(--hamburger-hit-area);
+  padding: 0;
+  margin: 0;
+  border: 0;
+  background: transparent;
+  cursor: pointer;
+}
+
+.hamburger span {
+  display: block;
+  width: 100%;
+  height: var(--hamburger-line-height);
+  background: var(--navbar-color);
+  transform-origin: center;
+  transition:
+    background-color 0.25s ease,
+    transform 0.25s ease,
+    opacity 0.25s ease;
+}
+
+body.navbar-on-light {
+  --navbar-color: #111111;
+}
+
+body.navbar-on-light .logo,
+body.navbar-on-light .menu {
+  text-shadow: none;
+}
+
+.hamburger.open span,
+body.menu-open .hamburger span {
+  background: var(--navbar-open-color) !important;
+}
+
+.hamburger.open span:nth-child(1) {
+  transform: translateY(calc(var(--hamburger-gap) + var(--hamburger-line-height))) rotate(45deg);
+}
+
+.hamburger.open span:nth-child(2) {
+  opacity: 0;
+}
+
+.hamburger.open span:nth-child(3) {
+  transform: translateY(calc((var(--hamburger-gap) + var(--hamburger-line-height)) * -1)) rotate(-45deg);
+}
+
+.nav-menu {
+  position: fixed;
+  top: 0;
+  right: calc((100vw - 100%) * -1);
+  z-index: 9000;
+  width: min(340px, 86vw);
+  min-height: 100vh;
+  min-height: 100svh;
+  padding: clamp(96px, 15vh, 150px) clamp(24px, 4vw, 44px);
+  background: var(--navbar-menu-bg);
+  box-sizing: border-box;
+  transform: translateX(100%);
+  visibility: hidden;
+  pointer-events: none;
+  transition:
+    transform 0.28s ease,
+    visibility 0.28s ease;
+}
+
+.nav-menu.open {
+  transform: translateX(0);
+  visibility: visible;
+  pointer-events: auto;
+}
+
+.nav-menu ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.nav-menu li {
+  margin: 0 0 26px;
+  color: var(--navbar-menu-text);
+  font-family: var(--navbar-font);
+  font-weight: 300;
+  font-size: clamp(18px, 1.15vw, 22px);
+  line-height: 1.15;
+  letter-spacing: 0.04em;
+}
+
+.nav-menu li:hover {
+  opacity: 0.65;
+}
+
+.nav-menu a {
+  display: block;
+  color: inherit;
+  font-family: var(--navbar-font);
+  font-weight: 300;
+  text-decoration: none;
+}
+
+@media (max-width: 900px) {
+  :root {
+    --page-margin-x: clamp(22px, 5.5vw, 52px);
+    --nav-top: clamp(34px, 7vh, 64px);
+    --hamburger-line-height: 2px;
+  }
+
+  .logo {
+    max-width: 34vw;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+}
+
+@media (max-width: 700px) {
+  :root {
+    --page-margin-x: clamp(18px, 6.2vw, 32px);
+    --nav-top: clamp(30px, 6.5vh, 48px);
+
+    --nav-font-size: clamp(11px, 3vw, 13px);
+    --logo-font-size: clamp(20px, 5.8vw, 30px);
+
+    --hamburger-width: clamp(28px, 8vw, 34px);
+    --hamburger-line-height: 2px;
+    --hamburger-hit-area: 42px;
+    --hamburger-top: clamp(24px, 4svh, 32px);
+  }
+
+  .logo {
+    max-width: 32vw;
+  }
+
+  .menu {
+    max-width: 34vw;
+  }
+
+  .nav-menu {
+    width: min(290px, 86vw);
+  }
+}

@@ -1,0 +1,21 @@
+# Archivi / backup
+*.zip
+*.rar
+*.7z
+
+# IDE
+.idea/
+
+# Sistema operativo
+.DS_Store
+Thumbs.db
+
+# Env / build
+node_modules/
+dist/
+build/
+.env
+.env.local
+
+# Video originali pesanti già caricati su YouTube
+*.mov

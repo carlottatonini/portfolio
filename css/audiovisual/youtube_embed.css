@@ -1,0 +1,62 @@
+/* ==========================================================================
+   SHARED YOUTUBE EMBEDS FOR AUDIOVISUAL PROJECT PAGES
+   ========================================================================== */
+
+.project-video {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  padding:
+    clamp(40px, 6vw, 100px)
+    var(--page-margin-x, clamp(20px, 5vw, 110px));
+  box-sizing: border-box;
+  background: var(--page-bg, #ffffff);
+}
+
+.video-embed {
+  width: 100%;
+  max-width: 1400px;
+  aspect-ratio: 16 / 9;
+  background: #000000;
+  overflow: hidden;
+}
+
+.video-embed iframe {
+  width: 100%;
+  height: 100%;
+  display: block;
+  border: 0;
+}
+
+.hero-video-embed {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  width: 100%;
+  height: var(--hero-height, 100svh);
+  min-height: var(--hero-height, 100svh);
+  overflow: hidden;
+  background: #000000;
+}
+
+.hero-video-embed iframe {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: max(100vw, calc(var(--hero-height, 100svh) * 16 / 9));
+  height: max(var(--hero-height, 100svh), calc(100vw * 9 / 16));
+  border: 0;
+  transform: translate(-50%, -50%);
+}
+
+.hero-video-embed iframe[src=""] {
+  display: none;
+}
+
+@media (max-width: 680px) {
+  .project-video {
+    padding:
+      clamp(32px, 9vw, 56px)
+      var(--page-margin-x, clamp(18px, 6.2vw, 32px));
+  }
+}
