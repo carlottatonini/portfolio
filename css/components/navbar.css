@@ -115,7 +115,8 @@ body::-webkit-scrollbar {
   }
 }
 
-body.project-subpage.navbar-on-light .header::before {
+body.project-subpage.navbar-on-light .header::before,
+body.about-page-shell.navbar-on-light .header::before {
   opacity: 1;
   transform: translateY(0);
 }
@@ -164,7 +165,7 @@ body.project-subpage.navbar-on-light .header::before {
   transform: translateX(-50%);
 }
 
-.navigate-through {
+a.navigate-through {
   cursor: pointer;
 }
 
@@ -226,7 +227,7 @@ body.project-subpage.navbar-on-light .header::before {
   position: absolute;
   bottom: 42%;
   width: 58%;
-  height: 1px;
+  height: var(--hamburger-line-height);
   background: currentColor;
   transform-origin: center;
 }

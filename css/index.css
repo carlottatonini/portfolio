@@ -74,6 +74,8 @@ body {
   --cv-section-gap: clamp(84px, 8.6vw, 164px);
   --cv-row-gap: clamp(62px, 7.4vw, 142px);
   --cv-rule-gap: clamp(78px, 4.7vw, 90px);
+  --cv-meta-row-gap: clamp(10px, 0.72vw, 14px);
+  --cv-year-rule-gap: clamp(22px, 2.1vw, 40px);
   --cv-copy-column: minmax(360px, 0.62fr);
   --cv-meta-column: minmax(300px, 0.38fr);
   --cv-year-width: clamp(74px, 5.7vw, 110px);
@@ -298,20 +300,11 @@ body {
   column-gap: clamp(46px, 5.2vw, 100px);
   padding-top: clamp(28px, 1.75vw, 34px);
   margin-top: var(--cv-row-gap);
+  overflow: hidden;
 }
 
 .experience-item:first-child {
   margin-top: 0;
-}
-
-.experience-item::before {
-  content: "";
-  position: absolute;
-  top: clamp(7px, 0.58vw, 11px);
-  left: var(--cv-year-width);
-  right: 0;
-  height: 1px;
-  background: #111111;
 }
 
 .experience-meta {
@@ -319,12 +312,26 @@ body {
   grid-template-columns: var(--cv-year-width) 1fr;
   align-content: start;
   column-gap: 0;
-  row-gap: clamp(10px, 0.72vw, 14px);
+  row-gap: var(--cv-meta-row-gap);
 }
 
 .experience-year {
   grid-column: 1;
   grid-row: 1;
+  position: relative;
+  justify-self: start;
+  white-space: nowrap;
+}
+
+.experience-year::after {
+  content: "";
+  position: absolute;
+  top: 0.64em;
+  left: calc(100% + var(--cv-year-rule-gap));
+  width: 100vw;
+  height: 1px;
+  background: #111111;
+  pointer-events: none;
 }
 
 .experience-meta h3,
@@ -336,6 +343,7 @@ body {
   display: grid;
   gap: clamp(22px, 1.55vw, 30px);
   align-content: start;
+  padding-top: calc(1.24em + var(--cv-meta-row-gap));
 }
 
 /* ==========================================================================
@@ -412,12 +420,9 @@ body {
     row-gap: clamp(24px, 5vw, 42px);
   }
 
-  .experience-item::before {
-    left: 0;
-  }
-
   .experience-copy {
     max-width: 680px;
+    padding-top: 0;
   }
 }
 

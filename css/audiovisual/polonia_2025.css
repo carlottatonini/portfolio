@@ -399,7 +399,11 @@ a {
   font-size: var(--intro-font-size);
   line-height: var(--intro-line-height);
   letter-spacing: 0.012em;
-  text-align: left;
+  text-align: justify;
+  text-align-last: left;
+  hyphens: auto;
+  -webkit-hyphens: auto;
+  overflow-wrap: break-word;
 }
 
 .intro-copy p:last-child {
@@ -747,4 +751,21 @@ a {
   .project-title {
     width: calc(100vw - var(--page-margin-x) - var(--page-margin-x));
   }
+}
+
+.project-question.concept-question,
+.quote-section .concept-question {
+  width: max-content;
+  max-width: calc(100vw - var(--question-block-left) - var(--page-margin-x));
+  text-align: left;
+  text-align-last: left;
+  hyphens: none;
+  -webkit-hyphens: none;
+  font-style: normal;
+  font-size: clamp(24px, 3.65vw, 62px);
+  line-height: 0.96;
+  white-space: normal;
+  overflow-wrap: normal;
+  word-break: normal;
+  text-wrap: normal;
 }
