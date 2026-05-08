@@ -28,6 +28,11 @@
 
   --hamburger-right: var(--page-margin-x);
   --hamburger-top: clamp(26px, 4.54svh, 49px);
+  --hero-arrow-right: var(--hamburger-right);
+  --hero-arrow-bottom: clamp(42px, 9.1svh, 98px);
+  --hero-arrow-width: clamp(34px, 3.65vw, 70px);
+  --hero-arrow-height: clamp(22px, 2.1vw, 40px);
+  --hero-arrow-color: var(--hero-text-color, #ffffff);
 
   --nav-font-size: clamp(15px, 1.15vw, 22px);
   --logo-font-size: clamp(22px, 1.9vw, 36px);
@@ -194,6 +199,59 @@ body.project-subpage.navbar-on-light .header::before {
     opacity 0.25s ease;
 }
 
+.scroll-arrow,
+.project-scroll-arrow {
+  position: absolute;
+  right: calc(var(--hero-arrow-right) - (100vw - 100%));
+  bottom: var(--hero-arrow-bottom);
+  z-index: 20;
+  display: block;
+  width: var(--hero-arrow-width);
+  height: var(--hero-arrow-height);
+  color: var(--hero-arrow-color);
+  text-decoration: none;
+  transition: opacity 0.2s ease;
+}
+
+.scroll-arrow:hover,
+.project-scroll-arrow:hover {
+  opacity: 0.65;
+}
+
+.scroll-arrow::before,
+.scroll-arrow::after,
+.project-scroll-arrow::before,
+.project-scroll-arrow::after {
+  content: "";
+  position: absolute;
+  bottom: 42%;
+  width: 58%;
+  height: 1px;
+  background: currentColor;
+  transform-origin: center;
+}
+
+.scroll-arrow::before,
+.project-scroll-arrow::before {
+  left: 0;
+  transform: rotate(42deg);
+}
+
+.scroll-arrow::after,
+.project-scroll-arrow::after {
+  right: 0;
+  transform: rotate(-42deg);
+}
+
+.scroll-arrow span,
+.project-scroll-arrow span {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+}
+
 body.navbar-on-light {
   --navbar-color: #111111;
 }
@@ -299,6 +357,7 @@ body.menu-open .hamburger span {
     --hamburger-line-height: 2px;
     --hamburger-hit-area: 42px;
     --hamburger-top: clamp(24px, 4svh, 32px);
+    --hero-arrow-bottom: clamp(30px, 6.3svh, 54px);
   }
 
   .logo {

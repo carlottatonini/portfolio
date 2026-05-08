@@ -10,6 +10,31 @@
   hamburger.dataset.navbarReady = 'true';
   document.body.classList.toggle('project-subpage', Boolean(projectHero));
 
+  const ensureProjectScrollArrow = () => {
+    if (!projectHero || projectHero.querySelector('.project-scroll-arrow')) {
+      return;
+    }
+
+    const projectInfo = document.querySelector('main.project-page .project-info');
+    const target = projectInfo || projectHero.nextElementSibling;
+
+    if (!target) {
+      return;
+    }
+
+    if (!target.id) {
+      target.id = 'project-info';
+    }
+
+    const arrow = document.createElement('a');
+    arrow.className = 'project-scroll-arrow';
+    arrow.href = `#${target.id}`;
+    arrow.setAttribute('aria-label', 'Scroll to project content');
+    arrow.innerHTML = '<span></span>';
+
+    projectHero.appendChild(arrow);
+  };
+
   const setMenuState = isOpen => {
     menu.classList.toggle('open', isOpen);
     hamburger.classList.toggle('open', isOpen);
@@ -71,6 +96,7 @@
     }
   });
 
+  ensureProjectScrollArrow();
   updateNavbarTone();
   window.addEventListener('scroll', requestNavbarToneUpdate, { passive: true });
   window.addEventListener('resize', requestNavbarToneUpdate);
