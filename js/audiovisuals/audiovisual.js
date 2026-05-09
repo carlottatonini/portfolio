@@ -9,6 +9,8 @@ const backgroundTwo = document.querySelector('.background-preview-2');
 if (projectItems.length > 0 && bottomLeft && backgroundOne && backgroundTwo) {
   const videoOne = document.createElement('video');
   const videoTwo = document.createElement('video');
+  const preloadedVideos = new Map();
+  const preloadedImages = new Map();
   const previewLayers = [
     { image: backgroundOne, video: videoOne },
     { image: backgroundTwo, video: videoTwo }
@@ -19,7 +21,7 @@ if (projectItems.length > 0 && bottomLeft && backgroundOne && backgroundTwo) {
     video.muted = true;
     video.loop = true;
     video.playsInline = true;
-    video.preload = 'metadata';
+    video.preload = 'auto';
     video.setAttribute('aria-hidden', 'true');
     document.body.insertBefore(video, bottomLeft);
   });
@@ -50,6 +52,46 @@ if (projectItems.length > 0 && bottomLeft && backgroundOne && backgroundTwo) {
   function resetLayer(layer) {
     clearImage(layer);
     hideVideo(layer);
+  }
+
+  function preloadVideo(src) {
+    if (!src || preloadedVideos.has(src)) {
+      return;
+    }
+
+    const video = document.createElement('video');
+    video.preload = 'auto';
+    video.muted = true;
+    video.loop = true;
+    video.playsInline = true;
+    video.src = src;
+    video.load();
+
+    preloadedVideos.set(src, video);
+  }
+
+  function preloadImage(src) {
+    if (!src || preloadedImages.has(src)) {
+      return;
+    }
+
+    const image = new Image();
+    image.src = src;
+
+    preloadedImages.set(src, image);
+  }
+
+  function preloadPreviewAssets() {
+    projectItems.forEach(item => {
+      preloadImage(item.getAttribute('data-bg'));
+      preloadVideo(item.getAttribute('data-video'));
+    });
+  }
+
+  if ('requestIdleCallback' in window) {
+    window.requestIdleCallback(preloadPreviewAssets, { timeout: 700 });
+  } else {
+    window.addEventListener('load', preloadPreviewAssets, { once: true });
   }
 
   function crossfadeToLayer(nextLayer) {

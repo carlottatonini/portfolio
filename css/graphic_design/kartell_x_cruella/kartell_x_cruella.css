@@ -301,7 +301,7 @@ a {
   grid-row: 2;
   width: 100%;
   aspect-ratio: 2.146;
-  justify-self: start;
+  justify-self: end;
 }
 
 .frame-d {
