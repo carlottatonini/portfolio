@@ -55,6 +55,7 @@
   --text-x: var(--guide-green);
   --question-x: var(--guide-blue);
   --hamburger-right: var(--page-margin-x);
+  --back-link-half-width: clamp(96px, 7.38vw, 139px);
   --text-block-left: var(--text-x);
   --text-block-right-edge: calc(100vw - var(--hamburger-right));
   --text-block-width: max(0px, calc(var(--text-block-right-edge) - var(--text-block-left)));

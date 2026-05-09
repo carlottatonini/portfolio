@@ -169,6 +169,16 @@ a.navigate-through {
   cursor: pointer;
 }
 
+@media (min-width: 901px) {
+  main.project-page {
+    --text-block-left: max(
+      var(--guide-green),
+      calc(var(--navigate-x, 50vw) - var(--back-link-half-width, var(--navigate-label-half-width)))
+    );
+    --text-block-width: max(0px, calc(var(--text-block-right-edge) - var(--text-block-left)));
+  }
+}
+
 .hamburger {
   position: fixed;
   top: var(--hamburger-top);
