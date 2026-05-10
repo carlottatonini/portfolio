@@ -1,0 +1,400 @@
+/*! HTML5 Boilerplate v9.0.1 | MIT License | https://html5boilerplate.com/ */
+
+/* ==========================================================================
+   FONT
+   ========================================================================== */
+
+/* ==========================================================================
+   BASE
+   ========================================================================== */
+
+html {
+  color: #222;
+  font-size: 1em;
+  line-height: 1.4;
+  scroll-behavior: smooth;
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+::-moz-selection {
+  background: #b3d4fc;
+  text-shadow: none;
+}
+
+::selection {
+  background: #b3d4fc;
+  text-shadow: none;
+}
+
+hr {
+  display: block;
+  height: 1px;
+  border: 0;
+  border-top: 1px solid #ccc;
+  margin: 1em 0;
+  padding: 0;
+}
+
+audio,
+canvas,
+iframe,
+img,
+svg,
+video {
+  vertical-align: middle;
+}
+
+fieldset {
+  border: 0;
+  margin: 0;
+  padding: 0;
+}
+
+textarea {
+  resize: vertical;
+}
+
+/* ==========================================================================
+   PAGINA GRAPHIC DESIGN + GUIDE RESPONSIVE
+   ========================================================================== */
+
+body {
+  color: white;
+  min-height: 100vh;
+  min-height: 100svh;
+  position: relative;
+  margin: 0;
+  overflow: hidden;
+
+  background-image: url("../../assets/images/graphic_design/graphic_design.JPG");
+  background-repeat: no-repeat;
+  background-position: center center;
+  background-size: cover;
+
+  font-family: "Proxima Nova", Arial, sans-serif;
+  font-weight: 300;
+
+  /*
+    Master layout: 1920 x 1080.
+    RED horizontal guide: 110px da top/bottom su 1080px  -> 10.185svh
+    YELLOW vertical guide: 110px da left/right su 1920px -> 5.729vw
+    BLUE vertical guide: 444px da left su 1920px         -> 23.125vw
+    GREEN vertical guide: 846px da left su 1920px        -> 44.063vw
+    PINK gutter: 20px costante
+  */
+  --guide-red-y: clamp(48px, 10.185svh, 110px);
+  --guide-yellow-x: clamp(20px, 5.729vw, 110px);
+  --guide-blue-x: clamp(110px, 23.125vw, 444px);
+  --guide-green-x: clamp(230px, 44.063vw, 846px);
+  --grid-gutter: 20px;
+}
+
+a {
+  color: inherit;
+}
+
+/* ==========================================================================
+   CAMBIO SFONDO SMOOTH
+   ========================================================================== */
+
+.background-preview {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  height: 100svh;
+  background-repeat: no-repeat;
+  background-position: center center;
+  background-size: cover;
+  opacity: 0;
+  transition: opacity 0.7s ease;
+  z-index: 0;
+  pointer-events: none;
+}
+
+.background-preview.active {
+  opacity: 1;
+}
+
+/* ==========================================================================
+   LINK IN BASSO A SINISTRA
+   ========================================================================== */
+
+.bottom-left {
+  font-family: "Instrument Serif", Georgia, serif;
+  font-weight: 400;
+  position: fixed;
+  left: var(--guide-yellow-x);
+  bottom: var(--guide-red-y);
+
+  max-width: min(1180px, calc(100vw - (2 * var(--guide-yellow-x))));
+  font-size: clamp(32px, 3.65vw, 70px);
+  line-height: 1.12;
+  letter-spacing: -0.5px;
+
+  opacity: 1;
+  z-index: 10;
+}
+
+.bottom-left ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.bottom-left li {
+  margin: 0;
+  padding: 0;
+  cursor: pointer;
+  transition: opacity 0.2s ease;
+}
+
+.bottom-left li:hover {
+  opacity: 0.6;
+}
+
+.bottom-left a,
+.bottom-left a:visited,
+.bottom-left a:hover,
+.bottom-left a:active {
+  color: white;
+  text-decoration: none;
+}
+
+.bottom-left a {
+  display: inline-flex;
+  align-items: flex-start;
+  gap: clamp(8px, 1vw, 18px);
+  width: fit-content;
+  max-width: 100%;
+}
+
+.project-title {
+  font-family: "Instrument Serif", Georgia, serif;
+  font-weight: 400;
+  line-height: 1;
+}
+
+.project-tag {
+  font-family: "Proxima Nova", Arial, sans-serif;
+  font-weight: 300;
+  font-size: clamp(10px, 0.85vw, 16px);
+  line-height: 1;
+  letter-spacing: 0.2px;
+  text-transform: uppercase;
+  white-space: nowrap;
+  flex: 0 0 auto;
+
+  /* valore più negativo = tag più in alto */
+  transform: translateY(0.16em);
+}
+
+.bottom-left a.active,
+.bottom-left li.active a {
+  text-decoration: underline;
+  text-underline-offset: 0.14em;
+  text-decoration-thickness: 1px;
+}
+
+/* ==========================================================================
+   CLASSI DI ALLINEAMENTO RIUTILIZZABILI PER LE PAGINE PROGETTO / GRIGLIE
+   ========================================================================== */
+
+.align-yellow {
+  left: var(--guide-yellow-x);
+}
+
+.align-blue {
+  left: var(--guide-blue-x);
+}
+
+.align-green {
+  left: var(--guide-green-x);
+}
+
+.grid-gutter {
+  gap: var(--grid-gutter);
+}
+
+/* ==========================================================================
+   RESPONSIVE
+   ========================================================================== */
+
+@media (max-width: 1024px) {
+  body {
+    --guide-red-y: clamp(42px, 8.6svh, 88px);
+    --guide-yellow-x: clamp(18px, 5.729vw, 70px);
+    --guide-blue-x: clamp(90px, 23.125vw, 300px);
+    --guide-green-x: clamp(210px, 44.063vw, 520px);
+  }
+
+  .bottom-left {
+    max-width: calc(100vw - (2 * var(--guide-yellow-x)));
+    font-size: clamp(30px, 5.2vw, 54px);
+    line-height: 1.15;
+  }
+
+  .project-tag {
+    font-size: clamp(10px, 1.3vw, 14px);
+  }
+}
+
+@media (max-width: 700px) {
+  body {
+    --guide-red-y: clamp(36px, 7svh, 64px);
+    --guide-yellow-x: clamp(16px, 5.729vw, 40px);
+    --guide-blue-x: clamp(80px, 23.125vw, 180px);
+    --guide-green-x: clamp(160px, 44.063vw, 300px);
+    background-position: 46% center;
+  }
+
+  .bottom-left {
+    max-width: calc(100vw - (2 * var(--guide-yellow-x)));
+    font-size: clamp(28px, 8vw, 42px);
+    line-height: 1.15;
+  }
+
+  .bottom-left a {
+    gap: 8px;
+  }
+
+  .project-tag {
+    font-size: clamp(9px, 2.7vw, 12px);
+    transform: translateY(0.25em);
+  }
+}
+
+@media (max-width: 480px) {
+  .bottom-left a {
+    display: inline-block;
+  }
+
+  .project-tag {
+    margin-left: 8px;
+    vertical-align: super;
+    position: relative;
+    top: -0.25em;
+  }
+}
+
+@media (max-width: 380px) {
+  body {
+    --guide-yellow-x: 14px;
+  }
+
+  .bottom-left {
+    font-size: clamp(26px, 8vw, 34px);
+  }
+}
+
+/* ==========================================================================
+   HELPER CLASSES
+   ========================================================================== */
+
+.hidden,
+[hidden] {
+  display: none !important;
+}
+
+.visually-hidden {
+  border: 0;
+  clip: rect(0, 0, 0, 0);
+  height: 1px;
+  margin: -1px;
+  overflow: hidden;
+  padding: 0;
+  position: absolute;
+  white-space: nowrap;
+  width: 1px;
+}
+
+.visually-hidden.focusable:active,
+.visually-hidden.focusable:focus {
+  clip: auto;
+  height: auto;
+  margin: 0;
+  overflow: visible;
+  position: static;
+  white-space: inherit;
+  width: auto;
+}
+
+.invisible {
+  visibility: hidden;
+}
+
+.clearfix::before,
+.clearfix::after {
+  content: "";
+  display: table;
+}
+
+.clearfix::after {
+  clear: both;
+}
+
+/* ==========================================================================
+   PRINT STYLES
+   ========================================================================== */
+
+@media print {
+  *,
+  *::before,
+  *::after {
+    background: #fff !important;
+    color: #000 !important;
+    box-shadow: none !important;
+    text-shadow: none !important;
+  }
+
+  a,
+  a:visited {
+    text-decoration: underline;
+  }
+
+  a[href]::after {
+    content: " (" attr(href) ")";
+  }
+
+  abbr[title]::after {
+    content: " (" attr(title) ")";
+  }
+
+  a[href^="#"]::after,
+  a[href^="javascript:"]::after {
+    content: "";
+  }
+
+  pre {
+    white-space: pre-wrap !important;
+  }
+
+  pre,
+  blockquote {
+    border: 1px solid #999;
+    page-break-inside: avoid;
+  }
+
+  tr,
+  img {
+    page-break-inside: avoid;
+  }
+
+  p,
+  h2,
+  h3 {
+    orphans: 3;
+    widows: 3;
+  }
+
+  h2,
+  h3 {
+    page-break-after: avoid;
+  }
+}

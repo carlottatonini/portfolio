@@ -1,0 +1,25 @@
+/* ==========================================================================
+   Shared layout and type variables
+   ========================================================================== */
+
+:root {
+  --page-margin-x: clamp(24px, 5.73vw, 110px);
+  --nav-top: clamp(48px, 10.185svh, 110px);
+  --project-title-bottom: clamp(42px, 10.18svh, 110px);
+
+  --guide-yellow: var(--page-margin-x);
+  --guide-blue: clamp(120px, 23.125vw, 444px);
+  --guide-green: clamp(220px, 44.06vw, 846px);
+
+  --grid-gutter: clamp(12px, 1.04vw, 20px);
+  --hero-height: 100svh;
+
+  --font-sans: "Proxima Nova", Arial, sans-serif;
+  --font-serif: "Instrument Serif", Georgia, serif;
+
+  --page-bg: #ffffff;
+  --text-color: #111111;
+  --hero-text-color: #ffffff;
+  --white: #ffffff;
+  --black: #111111;
+}

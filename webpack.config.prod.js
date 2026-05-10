@@ -11,9 +11,13 @@ module.exports = merge(common, {
     }),
     new CopyPlugin({
       patterns: [
-        { from: 'img', to: 'img' },
+        { from: 'assets', to: 'assets' },
         { from: 'css', to: 'css' },
-        { from: 'js/vendor', to: 'js/vendor' },
+        { from: 'js', to: 'js' },
+        { from: 'pages', to: 'pages' },
+        { from: 'audiovisual.html', to: 'audiovisual.html' },
+        { from: 'graphic_design.html', to: 'graphic_design.html' },
+        { from: 'cv.html', to: 'cv.html' },
         { from: 'icon.svg', to: 'icon.svg' },
         { from: 'favicon.ico', to: 'favicon.ico' },
         { from: 'robots.txt', to: 'robots.txt' },
