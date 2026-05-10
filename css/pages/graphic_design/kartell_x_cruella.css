@@ -21,7 +21,7 @@
   --font-serif: "Instrument Serif", Georgia, serif;
 
   --hero-title-font-size: clamp(42px, 3.2vw, 62px);
-  --body-font-size: clamp(17px, 1.5vw, 24px);
+  --body-font-size: clamp(13px, 1.25vw, 24px);
   --question-font-size: clamp(36px, 3.25vw, 62px);
   --label-font-size: clamp(14px, 1.15vw, 18px);
 
