@@ -9,6 +9,7 @@
   let iframeHost = null;
   let closeButton = null;
   let lastFocusedElement = null;
+  let backgroundElements = [];
 
   const createModal = () => {
     modal = document.createElement('div');
@@ -40,6 +41,38 @@
     `https://www.youtube.com/embed/${encodeURIComponent(videoId)}?autoplay=1&rel=0&modestbranding=1`
   );
 
+  const setBackgroundInteractivity = isInteractive => {
+    if (isInteractive) {
+      backgroundElements.forEach(({ element, inert, ariaHidden }) => {
+        element.inert = inert;
+
+        if (ariaHidden === null) {
+          element.removeAttribute('aria-hidden');
+        } else {
+          element.setAttribute('aria-hidden', ariaHidden);
+        }
+      });
+
+      backgroundElements = [];
+      return;
+    }
+
+    backgroundElements = Array.from(document.body.children)
+      .filter(element => element !== modal)
+      .map(element => ({
+        element,
+        inert: element.inert,
+        ariaHidden: element.hasAttribute('aria-hidden')
+          ? element.getAttribute('aria-hidden')
+          : null
+      }));
+
+    backgroundElements.forEach(({ element }) => {
+      element.inert = true;
+      element.setAttribute('aria-hidden', 'true');
+    });
+  };
+
   const closeVideo = () => {
     if (!modal) {
       return;
@@ -48,6 +81,8 @@
     modal.classList.remove('is-open');
     modal.setAttribute('aria-hidden', 'true');
     document.body.classList.remove('video-modal-open');
+    document.body.classList.remove('video-open');
+    setBackgroundInteractivity(true);
 
     const iframe = modal.querySelector('.video-modal__iframe');
 
@@ -83,16 +118,19 @@
     iframe.referrerPolicy = 'strict-origin-when-cross-origin';
     iframe.allowFullscreen = true;
 
-    iframeHost.appendChild(iframe);
     lastFocusedElement = document.activeElement;
+    iframeHost.appendChild(iframe);
 
     modal.classList.add('is-open');
     modal.setAttribute('aria-hidden', 'false');
     document.body.classList.add('video-modal-open');
+    document.body.classList.add('video-open');
 
     if (closeButton) {
       closeButton.focus();
     }
+
+    setBackgroundInteractivity(false);
   };
 
   triggers.forEach(trigger => {
