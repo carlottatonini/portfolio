@@ -115,8 +115,14 @@ body::-webkit-scrollbar {
   }
 }
 
-body.project-subpage.navbar-on-light .header::before,
-body.about-page-shell.navbar-on-light .header::before {
+body.navbar-materializing .header::before {
+  opacity: var(--navbar-materialization-progress, 0);
+  transform: translateY(var(--navbar-materialization-offset, -10px));
+  transition: none;
+}
+
+body.project-subpage.navbar-on-light:not(.navbar-materializing) .header::before,
+body.about-page-shell.navbar-on-light:not(.navbar-materializing) .header::before {
   opacity: 1;
   transform: translateY(0);
 }

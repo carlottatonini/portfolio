@@ -10,6 +10,13 @@
   hamburger.dataset.navbarReady = 'true';
   document.body.classList.toggle('project-subpage', Boolean(projectHero));
 
+  const root = document.documentElement;
+  const navbarHero = projectHero || document.querySelector('.hero');
+  const usesScrollMaterialization = Boolean(navbarHero) && !document.body.classList.contains('home');
+  const materializationDistanceRatio = 0.5;
+
+  document.body.classList.toggle('navbar-materializing', usesScrollMaterialization);
+
   const ensureProjectScrollArrow = () => {
     if (!projectHero || projectHero.querySelector('.project-scroll-arrow')) {
       return;
@@ -48,15 +55,17 @@
   };
 
   const updateNavbarTone = () => {
-    const hero = projectHero || document.querySelector('.hero');
     const header = document.querySelector('.header');
 
-    if (hero && header) {
-      const headerRect = header.getBoundingClientRect();
-      const heroRect = hero.getBoundingClientRect();
-      const sampleY = headerRect.bottom;
+    if (navbarHero && header && usesScrollMaterialization) {
+      const heroRect = navbarHero.getBoundingClientRect();
+      const heroTop = heroRect.top + window.scrollY;
+      const materializationDistance = Math.max(heroRect.height * materializationDistanceRatio, 1);
+      const progress = Math.min(Math.max((window.scrollY - heroTop) / materializationDistance, 0), 1);
 
-      document.body.classList.toggle('navbar-on-light', heroRect.bottom <= sampleY);
+      root.style.setProperty('--navbar-materialization-progress', progress.toFixed(3));
+      root.style.setProperty('--navbar-materialization-offset', `${-10 * (1 - progress)}px`);
+      document.body.classList.toggle('navbar-on-light', progress >= 1);
       return;
     }
 
